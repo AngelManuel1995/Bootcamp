@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <script src = "angular.min.js"></script>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <title>Ejemplpos de Angular JS</title>
+</head>
+  <body ng-app="myApp" ng-controller=myController>
+      <div class="container">
+        <div class="col-md-6">
+          <h1 class="text-center">Exercises of Angular JS</h1>
+          <div class="row">
+            <div class="col-md-9">
+                <h3 class="text-center">Exercise 1</h3>
+                <label for="firstname">First name: </label>
+                <input class = "form-control" type="text" placeholder="Your first name" ng-model=firstname>
+                <label for="lastname">Last name: </label>
+                <input class = "form-control" type="text" placeholder="Your last name" ng-model=lastname>
+                 {{"Hola " + firstname + " " + lastname}}
+            </div>
+          </div><hr>
+          <div class="row">
+            <div class="col-md-9">
+                <h3 class="text-center">Exercise 2</h3>
+                <label for="firstnumber">First number: </label>
+                <input class = "form-control" type="text" placeholder="Your first number" ng-model=firstnumber>
+                <label for="secondnumber">Second number: </label>
+                <input class = "form-control" type="text" placeholder="Your last number" ng-model=lastnumber><br>
+                <button class = "btn btn-primary" type="button" name="button" ng-click="res = firstnumber * lastnumber "> Multiply </button>
+                <button class = "btn btn-info">{{ firstnumber * lastnumber}}</button>
+                <button class = "btn btn-info">{{res}}</button>
+            </div>
+          </div><hr>
+          <div class="row">
+            <div class="col-md-9">
+                <h3 class="text-center">Exercise 3</h3>
+                <input type="text" ng-model="text" placeholder="Enter your input here...">
+                <p>Input value: {{text}}</p>
+                <p id = "prueba" >Filtered value: {{text | reverse}}</p>
+            </div>
+          </div><hr>
+          <div class="row">
+            <div class="col-md-9">
+                <h3 class="text-center">Exercise 4</h3>
+                <textarea class = "form-control" ng-model="tweet" name="name" rows="4" cols="40" maxlength="140" placeholder="Your Tweet"></textarea>
+                <!--<p>Input value: {{tweet}}</p>-->
+                <p id = "colorTweet">{{tweet | maxTweet}}</p>
+            </div>
+          </div><hr>
+          <div class="row">
+            <div class="col-md-9">
+                <h3 class="text-center">Exercise 5</h3>
+
+                <select class = "form-control" id="datalistId">
+          				<option value="opcion 1">Converse</option>
+          				<option value="opcion 2">Nike</option>
+          				<option value="opcion 3">Adidas</option>
+                  <option value="opcion 3">Loto</option>
+          			</select><br>
+
+                <input class="form-control" list="shoes">
+                <datalist  id="shoes">
+                  <option value="Converse">
+                  <option value="Nike">
+                  <option value="Adidas">
+                  <option value="Loto">
+                </datalist>
+            </div>
+          </div><hr>
+        </div>
+      </div>
+
+  <script>
+      var myApp = angular.module("myApp",[]);
+      myApp.controller("myController",function($scope){
+        $scope.text=" ";
+        /*$scope.tweet = 0;*/
+
+      });
+
+      myApp.filter("reverse",function(){
+        return function(input){
+          var palindroma = true;
+          var palabra = input.split("");
+          var palabraSinEspacion = "";
+          for(i in palabra) {
+             if(palabra[i] != " ") {
+               palabraSinEspacion += palabra[i];
+             }
+         }
+        var arrayPalabraSinEspacios = palabraSinEspacion.split("");
+        var arrayPalabraSinEspaciosReverse = palabraSinEspacion.split("").reverse();
+        for(var i = 0; i < arrayPalabraSinEspacios.length; i++){
+          if(arrayPalabraSinEspacios[i] != arrayPalabraSinEspaciosReverse[i]){
+            palindroma = false;
+            break;
+          }
+        }
+        console.log(palindroma);
+        if(palindroma == true && input != " "){
+            document.getElementById("prueba").style.color = "blue";
+            return input.split("").reverse().join("");
+        }else if(palindroma == false && input != " ") {
+            document.getElementById("prueba").style.color = "red";
+            return input.split("").reverse().join("");
+         }
+        }
+      });
+
+      myApp.filter("maxTweet",function(){
+        return function(input){
+          var tamanioTweet = input.length;
+          var maximo = 140;
+          var maximo = (140 - tamanioTweet);
+          if (maximo > 5) {
+              document.getElementById("colorTweet").style.color = "green";
+              return maximo;
+          }else{
+              document.getElementById("colorTweet").style.color = "red";
+              return maximo;
+          }
+
+        }
+      });
+    </script>
+  </body>
+</html>
