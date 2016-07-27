@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="col-md-6 col-md-offset-3">
+    <h1 class="text-center">Tower and Watchman</h1><hr>
+    <%= form_for @tower do |t| %>
+    <div class="form-group">
+      <%= t.label :name, "Tower name"%>
+      <%= t.text_field :name, placeholder: "Tower name",class:"form-control" %>
+    </div>
+    <div class="form-group">
+      <%= t.label :watchman, "watchman's name"%>
+      <%= t.text_field :watchman, placeholder: "Watchman' name", class:"form-control"%>
+    </div>
+    <div>
+      <%= t.submit class: "btn btn-primary btn-block"%>
+    </div>
+    <%end%>
+  </div>
+</div>

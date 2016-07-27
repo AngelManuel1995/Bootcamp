@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lista de posts</title>
+  <style>
+    h1{
+      text-align: center;
+      color: grey;
+      text-shadow: 2px 2px 2px black;
+    }
+    ul .li{
+      list-style:none;
+    }
+    ul{
+      margin: 0px;
+    }
+    h3{
+      text-align: justify;;
+      text-decoration: underline;
+      color: white;
+    }
+    .justify{
+      text-align: justify;
+    }
+    .center{
+      text-align: center;
+    }
+    .container{
+      background-color: grey;
+      width: 40%;
+      padding-right: 35px;
+      opacity: 0.9;
+    }
+    .bordear{
+      border-radius: 10px;
+    }
+    .white{
+      color: white;
+    }
+
+    *{
+      box-sizing: padding-box;
+    }
+  </style>
+</head>
+  <body>
+    <h1 class="center">Lista de posts</h1>
+    <div class="container bordear">
+      <ul>
+        <% @posts.each do |post| %>
+        <p>Titulo</p>
+        <li class="li">
+          <h3 class="center"><%= post.title %></h3>
+          <p>Contenido</p>
+          <article class="justify">
+            <span class="white"><%= post.content%></span>
+            <%= link_to "Edit", edit_post_path(post)%>
+            <%= link_to "Details", post_path(post)%>
+          </article>
+        </li>
+        <hr>
+        <%end%>
+      </ul>
+    </div>
+    <%= link_to "New post", new_post_path%>
+  </body>
+</html>

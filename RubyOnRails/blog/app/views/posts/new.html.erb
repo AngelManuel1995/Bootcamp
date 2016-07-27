@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>New post</title>
+  <style media="screen">
+    h1{
+      text-align: center;
+      color: grey;
+      text-shadow: 2px 2px 2px black;
+    }
+  </style>
+</head>
+<body>
+  <h1>Create a new article</h1>
+  <%= form_for @post do |f| %>
+    <div>
+      <%= f.label :title, "Tittle" %>
+      <%= f.text_field :title, placeholder: "Post tittle" %>
+    </div>
+    <div>
+      <%= f.label :content, "Content" %>
+      <%= f.text_area :content, placeholder: "Post content" %>
+    </div>
+    <div>
+      <%= f.submit %>
+    </div>
+  <%end%>
+</body>
+</html>

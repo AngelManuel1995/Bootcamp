@@ -1,0 +1,11 @@
+a{
+    color:white;
+    text-decoration-style: none;
+}
+a:hover{
+    color:#000;
+    text-decoration-style: none;
+}
+.sombra{
+  box-shadow:4px 4px 10px 2px grey;
+}

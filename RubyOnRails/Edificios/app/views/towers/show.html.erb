@@ -1,0 +1,39 @@
+<div class="container sombra">
+  <div class="row sombra">
+    <div class="col-md-5 text-center">
+        <span><strong>Name tower: </strong><span><%= @tower.name%>
+    </div>
+    <div class="col-md-5 text-center">
+        <span><strong>Watchman: <span></strong><%= @tower.watchman%>
+    </div>
+  </div><br>
+
+  <div class="row text-center">
+    <div class="col-md-8 col-md-offset-2">
+      <h2>Apertmen - name - floor</h2><hr>
+    </div>
+  </div>
+  <% @tower.apartments.each do |apartment|%>
+    <div class="col-md-2">
+      <strong><%= apartment.name%></strong>
+      <%= apartment.floor%>
+      <div class="btn-control">
+        <div class="btn btn-primary btn-xs">
+          <%= link_to "Edit", edit_tower_apartment_path(@tower,apartment)%>
+        </div>
+        <div class="btn btn-primary btn-xs">
+          <%= link_to "Show", tower_apartment_path(@tower,apartment) %>
+        </div>
+        <div class="btn btn-primary btn-xs">
+          <%= link_to "Delete", tower_apartment_path(@tower,apartment), method: :delete  %>
+        </div>
+      </div>
+    </div>
+  <% end%>
+</div><br>
+<div class="container">
+  <div class="btn btn-primary col-md-offset-5">
+    <%= link_to "New apartmen", new_tower_apartment_path(@tower) %>
+    <i class="fa fa-building-o" arial-hidden="true"></i>
+  </div><hr>
+</div>
